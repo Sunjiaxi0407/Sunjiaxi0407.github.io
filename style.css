@@ -104,6 +104,21 @@ article.content p {
     margin-bottom: 16px;
 }
 
+/* 浏览量统计 */
+.stats {
+    text-align: center;
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 0.8em;
+}
+.stats span {
+    margin: 0 8px;
+}
+#busuanzi_value_site_pv, #busuanzi_value_page_pv {
+    color: #666;
+    font-weight: 500;
+}
+
 footer {
     text-align: center;
     margin-top: 60px;
