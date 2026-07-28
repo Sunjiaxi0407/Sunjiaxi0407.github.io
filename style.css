@@ -1,3 +1,35 @@
+/* ===== CSS 变量 - 支持暗黑模式 ===== */
+:root {
+    --bg: #faf9f6;
+    --card: #fff;
+    --text: #333;
+    --text-secondary: #555;
+    --text-muted: #888;
+    --border: #eee;
+    --border-light: #f0f0f0;
+    --accent: #3a5f8a;
+    --tag-bg: #f0f4f8;
+    --tag-text: #3a5f8a;
+    --shadow: rgba(0,0,0,0.04);
+    --code-bg: #f5f5f5;
+}
+
+[data-theme="dark"] {
+    --bg: #1a1a1a;
+    --card: #242424;
+    --text: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-muted: #777;
+    --border: #333;
+    --border-light: #2a2a2a;
+    --accent: #6b9dc7;
+    --tag-bg: #2a3a4a;
+    --tag-text: #6b9dc7;
+    --shadow: rgba(0,0,0,0.2);
+    --code-bg: #2a2a2a;
+}
+
+/* ===== 基础 ===== */
 * {
     margin: 0;
     padding: 0;
@@ -5,136 +37,366 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: #faf9f6;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.8;
+    transition: background 0.3s, color 0.3s;
 }
 
 .container {
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
+/* ===== Header ===== */
 header {
     text-align: center;
-    margin-bottom: 60px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 50px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border);
 }
 
 header h1 {
     font-size: 1.8em;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 header .desc {
-    color: #888;
+    color: var(--text-muted);
     font-size: 0.9em;
 }
 
 nav {
-    margin-top: 20px;
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 nav a {
-    color: #666;
+    color: var(--text-secondary);
     text-decoration: none;
-    margin: 0 12px;
+    margin: 0 10px;
     font-size: 0.9em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
 }
 
 nav a:hover {
-    color: #333;
+    color: var(--accent);
+    background: var(--tag-bg);
 }
 
+/* ===== 文章列表 ===== */
 .post {
-    margin-bottom: 40px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.post:last-child {
+    border-bottom: none;
 }
 
 .post h2 {
-    font-size: 1.3em;
+    font-size: 1.25em;
     font-weight: 500;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .post h2 a {
-    color: #333;
+    color: var(--text);
     text-decoration: none;
 }
 
 .post h2 a:hover {
-    color: #666;
+    color: var(--accent);
 }
 
 .post time {
-    color: #aaa;
-    font-size: 0.85em;
+    color: var(--text-muted);
+    font-size: 0.82em;
 }
 
-.post p {
-    margin-top: 10px;
-    color: #555;
+.post .excerpt {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 0.95em;
 }
 
+.post .tags {
+    margin-top: 8px;
+}
+
+/* ===== 文章详情页 ===== */
 article.content {
-    background: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    background: var(--card);
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px var(--shadow);
+    transition: background 0.3s;
 }
 
 article.content h1 {
     font-size: 1.5em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+    font-weight: 600;
 }
 
-article.content time {
-    color: #aaa;
+.meta {
+    color: var(--text-muted);
     font-size: 0.85em;
-    display: block;
     margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.meta .read-time::before {
+    content: "⏱ ";
 }
 
 article.content p {
     margin-bottom: 16px;
+    color: var(--text-secondary);
 }
 
-/* 浏览量统计 */
-.stats {
-    text-align: center;
-    margin-top: 15px;
-    color: #aaa;
-    font-size: 0.8em;
-}
-.stats span {
-    margin: 0 8px;
-}
-#busuanzi_value_site_pv, #busuanzi_value_page_pv {
-    color: #666;
-    font-weight: 500;
+article.content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: block;
 }
 
-footer {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid #eee;
-    color: #aaa;
-    font-size: 0.85em;
+/* ===== 标签 ===== */
+.tags {
+    margin-top: 12px;
 }
 
-.back {
+.tag {
     display: inline-block;
-    margin-top: 30px;
-    color: #888;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.82em;
+    margin-right: 6px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.tag:hover {
+    opacity: 0.8;
+}
+
+/* ===== 上一篇/下一篇 ===== */
+.post-nav {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.post-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9em;
+    max-width: 45%;
+}
+
+.post-nav a:hover {
+    color: var(--accent);
+}
+
+.post-nav .prev::before {
+    content: "← ";
+}
+
+.post-nav .next::after {
+    content: " →";
+}
+
+.post-nav .empty {
+    color: var(--text-muted);
+}
+
+/* ===== 评论 ===== */
+.comments {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border);
+}
+
+.comments h3 {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    color: var(--text);
+}
+
+/* ===== 归档页 ===== */
+.archive-year {
+    margin-bottom: 30px;
+}
+
+.archive-year h2 {
+    font-size: 1.2em;
+    color: var(--accent);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+}
+
+.archive-list {
+    list-style: none;
+}
+
+.archive-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-light);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.archive-list time {
+    color: var(--text-muted);
+    font-size: 0.85em;
+    min-width: 90px;
+    flex-shrink: 0;
+}
+
+.archive-list a {
+    color: var(--text);
     text-decoration: none;
 }
 
+.archive-list a:hover {
+    color: var(--accent);
+}
+
+/* ===== 回到顶部 ===== */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    background: var(--card);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+#back-to-top:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+}
+
+#back-to-top.show {
+    display: flex;
+}
+
+/* ===== 暗黑模式切换 ===== */
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: all 0.3s;
+    z-index: 100;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.85em;
+}
+
+.stats {
+    margin-top: 10px;
+}
+
+.stats span {
+    margin: 0 8px;
+}
+
+#busuanzi_value_site_pv,
+#busuanzi_value_page_pv {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ===== 返回首页 ===== */
+.back {
+    display: inline-block;
+    margin-top: 25px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
 .back:hover {
-    color: #333;
+    color: var(--accent);
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 15px;
+    }
+    
+    article.content {
+        padding: 25px 20px;
+    }
+    
+    .post-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .post-nav a {
+        max-width: 100%;
+    }
+    
+    #theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+    }
 }

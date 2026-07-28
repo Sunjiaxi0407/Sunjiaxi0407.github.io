@@ -5,7 +5,7 @@
         <link>https://sunjiaxi0407.github.io/</link>
         <description>随便写点，不用整理</description>
         <language>zh-CN</language>
-        <lastBuildDate>Mon, 28 Jul 2026 03:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 28 Jul 2026 04:00:00 GMT</lastBuildDate>
         <atom:link href="https://sunjiaxi0407.github.io/index.xml" rel="self" type="application/rss+xml"/>
         
         <item>
@@ -14,6 +14,8 @@
             <guid>https://sunjiaxi0407.github.io/posts/2026-07-28-yige.html</guid>
             <pubDate>Mon, 28 Jul 2026 03:00:00 GMT</pubDate>
             <description><![CDATA[一哥8岁零四个月，终于开始自己睡了。成长里程碑。]]></description>
+            <category>育儿</category>
+            <category>成长</category>
         </item>
         
         <item>
@@ -22,6 +24,7 @@
             <guid>https://sunjiaxi0407.github.io/posts/2026-07-28-hello.html</guid>
             <pubDate>Mon, 28 Jul 2026 03:00:00 GMT</pubDate>
             <description><![CDATA[博客搭好了，以后就在这里随便写写。]]></description>
+            <category>随笔</category>
         </item>
     </channel>
 </rss>

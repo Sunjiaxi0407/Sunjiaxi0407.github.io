@@ -5,24 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>第一篇 - 碎碎念</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="alternate" type="application/rss+xml" title="碎碎念" href="../index.xml" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="第一篇 - 碎碎念">
+    <meta property="og:description" content="博客搭好了，以后就在这里随便写写">
+    <meta property="og:url" content="https://sunjiaxi0407.github.io/posts/2026-07-28-hello.html">
+    <meta property="og:type" content="article">
 </head>
 <body>
+    <button id="theme-toggle" title="切换主题">🌙</button>
+    
     <div class="container">
         <header>
             <h1>🌙 碎碎念</h1>
             <nav>
                 <a href="../index.html">首页</a>
+                <a href="../archives.html">归档</a>
                 <a href="../about.html">关于</a>
+                <a href="../index.xml">📡 RSS</a>
             </nav>
         </header>
 
         <article class="content">
             <h1>第一篇</h1>
-            <time>2026-07-28</time>
+            <div class="meta">
+                <time>2026-07-28</time>
+                <span class="read-time">1 分钟</span>
+            </div>
             <p>博客搭好了。</p>
             <p>以后就在这里随便写写，不用管格式，不用管有没有人看。</p>
             <p>像写日记一样，只不过是在网上。</p>
+            
+            <div class="tags">
+                <span class="tag">随笔</span>
+            </div>
         </article>
+
+        <div class="post-nav">
+            <span class="empty">已经是第一篇</span>
+            <a href="2026-07-28-yige.html" class="next">一哥开始自己睡了</a>
+        </div>
+
+        <div class="comments">
+            <h3>💬 留言</h3>
+            <script src="https://utteranc.es/client.js"
+                repo="Sunjiaxi0407/Sunjiaxi0407.github.io"
+                issue-term="pathname"
+                theme="preferred-color-scheme"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </div>
 
         <a href="../index.html" class="back">← 返回首页</a>
 
@@ -35,5 +70,40 @@
             <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         </footer>
     </div>
+    
+    <button id="back-to-top" title="回到顶部">↑</button>
+    
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+        
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>

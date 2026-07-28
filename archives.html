@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于 - 碎碎念</title>
+    <title>归档 - 碎碎念</title>
     <link rel="stylesheet" href="style.css">
     <link rel="alternate" type="application/rss+xml" title="碎碎念" href="index.xml" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="关于 - 碎碎念">
+    <meta property="og:title" content="归档 - 碎碎念">
     <meta property="og:description" content="随便写点，不用整理">
-    <meta property="og:url" content="https://sunjiaxi0407.github.io/about.html">
+    <meta property="og:url" content="https://sunjiaxi0407.github.io/archives.html">
     <meta property="og:type" content="website">
 </head>
 <body>
@@ -20,6 +20,7 @@
     <div class="container">
         <header>
             <h1>🌙 碎碎念</h1>
+            <p class="desc">随便写点，不用整理</p>
             <nav>
                 <a href="index.html">首页</a>
                 <a href="archives.html">归档</a>
@@ -28,12 +29,28 @@
             </nav>
         </header>
 
-        <article class="content">
-            <h1>关于</h1>
-            <p>随便写点什么。</p>
-            <p>不用排版，不用配图，不用想标题。</p>
-            <p>想到哪写到哪。</p>
-        </article>
+        <main>
+            <div class="archive-year">
+                <h2>2026</h2>
+                <ul class="archive-list">
+                    <li>
+                        <time>07-28</time>
+                        <a href="posts/2026-07-28-yige.html">一哥开始自己睡了</a>
+                        <span class="tags">
+                            <span class="tag">育儿</span>
+                            <span class="tag">成长</span>
+                        </span>
+                    </li>
+                    <li>
+                        <time>07-28</time>
+                        <a href="posts/2026-07-28-hello.html">第一篇</a>
+                        <span class="tags">
+                            <span class="tag">随笔</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </main>
 
         <footer>
             <p>© 2026</p>
@@ -47,6 +64,7 @@
     <button id="back-to-top" title="回到顶部">↑</button>
     
     <script>
+        // 暗黑模式
         const themeToggle = document.getElementById('theme-toggle');
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
@@ -66,6 +84,7 @@
             }
         });
         
+        // 回到顶部
         const backToTop = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {

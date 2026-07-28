@@ -6,14 +6,24 @@
     <title>碎碎念</title>
     <link rel="stylesheet" href="style.css">
     <link rel="alternate" type="application/rss+xml" title="碎碎念" href="index.xml" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="碎碎念">
+    <meta property="og:description" content="随便写点，不用整理">
+    <meta property="og:url" content="https://sunjiaxi0407.github.io/">
+    <meta property="og:type" content="website">
 </head>
 <body>
+    <button id="theme-toggle" title="切换主题">🌙</button>
+    
     <div class="container">
         <header>
             <h1>🌙 碎碎念</h1>
             <p class="desc">随便写点，不用整理</p>
             <nav>
                 <a href="index.html">首页</a>
+                <a href="archives.html">归档</a>
                 <a href="about.html">关于</a>
                 <a href="index.xml">📡 RSS</a>
             </nav>
@@ -21,14 +31,22 @@
 
         <main>
             <article class="post">
-                <h2><a href="posts/2026-07-28-hello.html">第一篇</a></h2>
-                <time>2026-07-28</time>
-                <p>博客搭好了，以后就在这里随便写写...</p>
-            </article>
-        <article class="post">
                 <h2><a href="posts/2026-07-28-yige.html">一哥开始自己睡了</a></h2>
                 <time>2026-07-28</time>
-                <p>一哥8岁零四个月，终于开始自己睡了。成长里程碑...</p>
+                <p class="excerpt">一哥8岁零四个月，终于开始自己睡了。成长里程碑...</p>
+                <div class="tags">
+                    <span class="tag">育儿</span>
+                    <span class="tag">成长</span>
+                </div>
+            </article>
+            
+            <article class="post">
+                <h2><a href="posts/2026-07-28-hello.html">第一篇</a></h2>
+                <time>2026-07-28</time>
+                <p class="excerpt">博客搭好了，以后就在这里随便写写...</p>
+                <div class="tags">
+                    <span class="tag">随笔</span>
+                </div>
             </article>
         </main>
 
@@ -40,5 +58,42 @@
             <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
         </footer>
     </div>
+    
+    <button id="back-to-top" title="回到顶部">↑</button>
+    
+    <script>
+        // 暗黑模式
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        }
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+        
+        // 回到顶部
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
